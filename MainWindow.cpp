@@ -44,13 +44,13 @@ MainWindow::MainWindow(QWidget *parent) :
     ui->setupUi(this);
     // Set start tab as blank
     QLabel *newTab = new QLabel(ui->tabWidget);
-    newTab->setText("No camera connected.");
+    newTab->setText("没有连接摄像头.");
     newTab->setAlignment(Qt::AlignCenter);
     ui->tabWidget->addTab(newTab, "");
     ui->tabWidget->setTabsClosable(false);
     // Add "Connect to Camera" button to tab
     connectToCameraButton = new QPushButton();
-    connectToCameraButton->setText("Connect to Camera...");
+    connectToCameraButton->setText("连接到摄像头...");
     ui->tabWidget->setCornerWidget(connectToCameraButton, Qt::TopLeftCorner);
     connect(connectToCameraButton,SIGNAL(released()),this, SLOT(connectToCamera()));
     connect(ui->tabWidget,SIGNAL(tabCloseRequested(int)),this, SLOT(disconnectCamera(int)));

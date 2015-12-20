@@ -69,6 +69,11 @@ CameraConnectDialog::CameraConnectDialog(QWidget *parent, bool isStreamSyncEnabl
     ui->enableFrameProcessingCheckBox->setEnabled(isStreamSyncEnabled);
     // Connect button to slot
     connect(ui->resetToDefaultsPushButton,SIGNAL(released()),SLOT(resetToDefaults()));
+
+    // added by quqinglei@icloud.com for my own use
+    ui->deviceNumberEdit->setText("0");
+    ui->resWEdit->setText("1920");
+    ui->resHEdit->setText("1080");
 }
 
 CameraConnectDialog::~CameraConnectDialog()

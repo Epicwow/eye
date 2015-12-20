@@ -103,9 +103,9 @@ bool CameraView::connectToCamera(bool dropFrameIfBufferFull, int capThreadPrio, 
 {
     // Set frame label text
     if(sharedImageBuffer->isSyncEnabledForDeviceNumber(deviceNumber))
-        ui->frameLabel->setText("Camera connected. Waiting...");
+        ui->frameLabel->setText("摄像头已连接，请稍后...");
     else
-        ui->frameLabel->setText("Connecting to camera...");
+        ui->frameLabel->setText("正在连接到摄像头...");
 
     // Create capture thread
     captureThread = new CaptureThread(sharedImageBuffer, deviceNumber, dropFrameIfBufferFull, width, height);

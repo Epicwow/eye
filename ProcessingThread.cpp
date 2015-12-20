@@ -70,6 +70,7 @@ void ProcessingThread::run()
 
         processingMutex.lock();
         // Get frame from queue, store in currentFrame, set ROI
+        qDebug() << currentROI.width << currentROI.height;
         currentFrame=Mat(sharedImageBuffer->getByDeviceNumber(deviceNumber)->get().clone(), currentROI);
 
         // Example of how to grab a frame from another stream (where Device Number=1)
@@ -145,6 +146,8 @@ void ProcessingThread::run()
 
         // Convert Mat to QImage
         frame=MatToQImage(currentFrame);
+        // quqinglei add here
+        //frame.save("/tmp/lei.png");
         processingMutex.unlock();
 
         // Inform GUI thread of new frame (QImage)
@@ -225,10 +228,16 @@ void ProcessingThread::updateImageProcessingSettings(struct ImageProcessingSetti
 void ProcessingThread::setROI(QRect roi)
 {
     QMutexLocker locker(&processingMutex);
+    /*
     currentROI.x = roi.x();
     currentROI.y = roi.y();
     currentROI.width = roi.width();
     currentROI.height = roi.height();
+    */
+    currentROI.x = 669;
+    currentROI.y = 180,
+    currentROI.width = 643;
+    currentROI.height = 900;
 }
 
 QRect ProcessingThread::getCurrentROI()

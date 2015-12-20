@@ -19,7 +19,7 @@
      <x>10</x>
      <y>10</y>
      <width>391</width>
-     <height>351</height>
+     <height>363</height>
     </rect>
    </property>
    <layout class="QVBoxLayout" name="verticalLayout_4">
@@ -35,7 +35,7 @@
          </font>
         </property>
         <property name="text">
-         <string>Camera:</string>
+         <string>摄像头设置:</string>
         </property>
        </widget>
       </item>
@@ -51,7 +51,7 @@
            </font>
           </property>
           <property name="text">
-           <string>Device Number:</string>
+           <string>设备号:</string>
           </property>
          </widget>
         </item>
@@ -115,7 +115,7 @@
            </font>
           </property>
           <property name="text">
-           <string>Resolution (W x H):</string>
+           <string>分辨率(W x H):</string>
           </property>
          </widget>
         </item>
@@ -209,7 +209,7 @@
            </font>
           </property>
           <property name="text">
-           <string>[optional]</string>
+           <string>可设置</string>
           </property>
          </widget>
         </item>
@@ -238,7 +238,7 @@
          </font>
         </property>
         <property name="text">
-         <string>Image Buffer:</string>
+         <string>图像缓存:</string>
         </property>
        </widget>
       </item>
@@ -254,7 +254,7 @@
            </font>
           </property>
           <property name="text">
-           <string>Size (number of images/frames):</string>
+           <string>大小 (图像数量/帧):</string>
           </property>
          </widget>
         </item>
@@ -322,7 +322,7 @@
          </font>
         </property>
         <property name="text">
-         <string>Drop frame if image buffer is full</string>
+         <string>如果缓存满，弃帧</string>
         </property>
        </widget>
       </item>
@@ -336,7 +336,7 @@
          </font>
         </property>
         <property name="text">
-         <string>Thread Priorities:</string>
+         <string>线程优先级:</string>
         </property>
        </widget>
       </item>
@@ -354,7 +354,7 @@
              </font>
             </property>
             <property name="text">
-             <string>Capture Thread:</string>
+             <string>抓取线程:</string>
             </property>
            </widget>
           </item>
@@ -368,7 +368,7 @@
              </font>
             </property>
             <property name="text">
-             <string>Processing Thread:</string>
+             <string>处理线程:</string>
             </property>
            </widget>
           </item>
@@ -410,7 +410,7 @@
            </font>
           </property>
           <property name="text">
-           <string>Tab Label:</string>
+           <string>摄像头标签:</string>
           </property>
          </widget>
         </item>
@@ -435,7 +435,7 @@
            </font>
           </property>
           <property name="text">
-           <string>Enable frame processing</string>
+           <string>允许处理图像</string>
           </property>
          </widget>
         </item>
@@ -455,7 +455,7 @@
       <item>
        <widget class="QPushButton" name="resetToDefaultsPushButton">
         <property name="text">
-         <string>Reset to Defaults</string>
+         <string>恢复默认</string>
         </property>
        </widget>
       </item>
