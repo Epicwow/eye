@@ -420,6 +420,20 @@
        </property>
       </widget>
      </item>
+     <item row="0" column="3">
+      <widget class="QLineEdit" name="lineEditReceipt">
+       <property name="placeholderText">
+        <string>手环号：</string>
+       </property>
+      </widget>
+     </item>
+     <item row="1" column="3">
+      <widget class="QPushButton" name="pushButtonCapture">
+       <property name="text">
+        <string>拍照</string>
+       </property>
+      </widget>
+     </item>
     </layout>
    </item>
   </layout>

@@ -77,9 +77,12 @@ class CameraView : public QWidget
         void updateCaptureThreadStats(struct ThreadStatisticsData statData);
         void handleContextMenuAction(QAction *action);
 
-    signals:
+        void on_pushButtonCapture_clicked();
+
+signals:
         void newImageProcessingFlags(struct ImageProcessingFlags imageProcessingFlags);
         void setROI(QRect roi);
+        void setReceipt(QString receipt);
 };
 
 #endif // CAMERAVIEW_H

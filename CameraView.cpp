@@ -123,6 +123,7 @@ bool CameraView::connectToCamera(bool dropFrameIfBufferFull, int capThreadPrio, 
         connect(imageProcessingSettingsDialog, SIGNAL(newImageProcessingSettings(struct ImageProcessingSettings)), processingThread, SLOT(updateImageProcessingSettings(struct ImageProcessingSettings)));
         connect(this, SIGNAL(newImageProcessingFlags(struct ImageProcessingFlags)), processingThread, SLOT(updateImageProcessingFlags(struct ImageProcessingFlags)));
         connect(this, SIGNAL(setROI(QRect)), processingThread, SLOT(setROI(QRect)));
+        connect(this, SIGNAL(setReceipt(QString)), processingThread, SLOT(captureScreen(QString)));
         // Only enable ROI setting/resetting if frame processing is enabled
         if(enableFrameProcessing)
             connect(ui->frameLabel, SIGNAL(newMouseData(struct MouseData)), this, SLOT(newMouseData(struct MouseData)));
@@ -374,4 +375,9 @@ void CameraView::handleContextMenuAction(QAction *action)
     }
     else if(action->text()=="Settings...")
         setImageProcessingSettings();
+}
+
+void CameraView::on_pushButtonCapture_clicked()
+{
+    emit setReceipt(ui->lineEditReceipt->text());
 }

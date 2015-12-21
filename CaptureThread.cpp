@@ -39,6 +39,7 @@ CaptureThread::CaptureThread(SharedImageBuffer *sharedImageBuffer, int deviceNum
     this->deviceNumber=deviceNumber;
     this->width = width;
     this->height = height;
+    shot = 0; // shot = 1 代表需要拍照
     // Initialize variables(s)
     doStop=false;
     sampleNumber=0;

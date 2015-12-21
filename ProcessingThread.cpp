@@ -43,6 +43,8 @@ ProcessingThread::ProcessingThread(SharedImageBuffer *sharedImageBuffer, int dev
     fps.clear();
     statsData.averageFPS=0;
     statsData.nFramesProcessed=0;
+    enableCapture = false;
+    receipt = "";
 }
 
 void ProcessingThread::run()
@@ -147,7 +149,14 @@ void ProcessingThread::run()
         // Convert Mat to QImage
         frame=MatToQImage(currentFrame);
         // quqinglei add here
-        //frame.save("/tmp/lei.png");
+        if (enableCapture) {
+            QString fileName = QString("/tmp/%1.png").arg(receipt);
+            frame.save(fileName);
+
+            enableCapture = false;
+            receipt = "";
+        }
+
         processingMutex.unlock();
 
         // Inform GUI thread of new frame (QImage)
@@ -243,4 +252,10 @@ void ProcessingThread::setROI(QRect roi)
 QRect ProcessingThread::getCurrentROI()
 {
     return QRect(currentROI.x, currentROI.y, currentROI.width, currentROI.height);
+}
+
+void ProcessingThread::captureScreen(QString receipt)
+{
+    this->receipt = receipt;
+    this->enableCapture = true;
 }

@@ -83,6 +83,9 @@ class ProcessingThread : public QThread
         int deviceNumber;
         bool enableFrameProcessing;
 
+        QString receipt;
+        bool enableCapture;
+
     protected:
         void run();
 
@@ -90,6 +93,7 @@ class ProcessingThread : public QThread
         void updateImageProcessingFlags(struct ImageProcessingFlags);
         void updateImageProcessingSettings(struct ImageProcessingSettings);
         void setROI(QRect roi);
+        void captureScreen(QString receipt);
 
     signals:
         void newFrame(const QImage &frame);

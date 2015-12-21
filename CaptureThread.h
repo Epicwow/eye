@@ -59,6 +59,7 @@ class CaptureThread : public QThread
         bool isCameraConnected();
         int getInputSourceWidth();
         int getInputSourceHeight();
+        bool shot;
 
     private:
         void updateFPS(int);
@@ -77,6 +78,8 @@ class CaptureThread : public QThread
         int deviceNumber;
         int width;
         int height;
+        QString receipt;
+        bool capturePicture;
 
     protected:
         void run();
