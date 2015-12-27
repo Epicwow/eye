@@ -70,6 +70,11 @@ CameraView::CameraView(QWidget *parent, int deviceNumber, SharedImageBuffer *sha
     connect(ui->frameLabel->menu, SIGNAL(triggered(QAction*)), this, SLOT(handleContextMenuAction(QAction*)));
     // Register type
     qRegisterMetaType<struct ThreadStatisticsData>("ThreadStatisticsData");
+
+    if (databaseTest()) {
+        connectDatabase();
+        qDebug() << "Connecting to database";
+    }
 }
 
 CameraView::~CameraView()
@@ -377,7 +382,68 @@ void CameraView::handleContextMenuAction(QAction *action)
         setImageProcessingSettings();
 }
 
+void CameraView::getSetPersonInfo()
+{
+    QString receipt = ui->lineEditReceipt->text().toUpper();
+    QString table_name, name, gender, phone, code;
+    if (receipt.isEmpty()) return;
+
+    QChar chara = receipt.at(0);
+    if (chara == QChar('A')) table_name = "zen_male";
+    else table_name = "zen_female";
+
+    QSqlQuery query;
+    query.exec(QString("select name, gender, phone_num, code from %1 where receipt = '%2'").arg(table_name
+                                                                           ).arg(receipt));
+    while(query.next()) {
+        name = query.value(0).toString();
+        gender = query.value(1).toString();
+        phone = query.value(2).toString();
+        code = query.value(3).toString();
+        qDebug() << name << gender << phone << code;
+    }
+
+    query.clear();
+
+    ui->labelCode->setText(code);
+    ui->labelName->setText(name);
+    ui->labelGender->setText(gender);
+    ui->labelPhone->setText(phone);
+}
+
 void CameraView::on_pushButtonCapture_clicked()
 {
     emit setReceipt(ui->lineEditReceipt->text());
 }
+
+void CameraView::on_lineEditReceipt_returnPressed()
+{
+    getSetPersonInfo();
+}
+
+bool CameraView::databaseTest()
+{
+    bool ret;
+    QTcpSocket tsock;
+    tsock.connectToHost(SERVER_IP, 3306);
+    ret = tsock.waitForConnected(1000);
+    if (ret) tsock.close();
+    return ret;
+}
+
+bool CameraView::connectDatabase()
+{
+    db = QSqlDatabase::addDatabase("QMYSQL");
+    db.setHostName(SERVER_IP);
+    db.setDatabaseName(DB_NAME);
+    db.setUserName(DB_USER);
+    db.setPassword(DB_PASS);
+
+    if(!db.open()) {
+        QMessageBox::critical(this, "数据库错误", db.lastError().text());
+        return false;
+    }
+
+    return true;
+}
+

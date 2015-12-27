@@ -33,12 +33,20 @@
 #ifndef CAMERAVIEW_H
 #define CAMERAVIEW_H
 
+#include <QtSql>
+#include <QTcpSocket>
+
 // Local
 #include "CaptureThread.h"
 #include "ProcessingThread.h"
 #include "ImageProcessingSettingsDialog.h"
 #include "Structures.h"
 #include "SharedImageBuffer.h"
+
+#define DB_NAME "citta"
+#define DB_PASS "113"
+#define DB_USER "citta"
+#define SERVER_IP "192.168.1.5"
 
 namespace Ui {
     class CameraView;
@@ -52,6 +60,9 @@ class CameraView : public QWidget
         explicit CameraView(QWidget *parent, int deviceNumber, SharedImageBuffer *sharedImageBuffer);
         ~CameraView();
         bool connectToCamera(bool dropFrame, int capThreadPrio, int procThreadPrio, bool createProcThread, int width, int height);
+        bool databaseTest();
+        bool connectDatabase();
+        QSqlDatabase db;
 
     private:
         Ui::CameraView *ui;
@@ -62,6 +73,7 @@ class CameraView : public QWidget
         ImageProcessingFlags imageProcessingFlags;
         void stopCaptureThread();
         void stopProcessingThread();
+        void getSetPersonInfo();
         int deviceNumber;
         bool isCameraConnected;
 
@@ -78,6 +90,8 @@ class CameraView : public QWidget
         void handleContextMenuAction(QAction *action);
 
         void on_pushButtonCapture_clicked();
+
+        void on_lineEditReceipt_returnPressed();
 
 signals:
         void newImageProcessingFlags(struct ImageProcessingFlags imageProcessingFlags);

@@ -1,4 +1,6 @@
 QT += core gui
+QT += sql
+QT += network
 
 INCLUDEPATH += /usr/local/Cellar/opencv/2.4.12/include/opencv
 INCLUDEPATH += /usr/local/Cellar/opencv/2.4.12/include

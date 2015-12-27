@@ -6,8 +6,8 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>765</width>
-    <height>1280</height>
+    <width>736</width>
+    <height>615</height>
    </rect>
   </property>
   <property name="sizePolicy">
@@ -70,7 +70,7 @@
           </font>
          </property>
          <property name="text">
-          <string>Clear Image Buffer</string>
+          <string>清理图像缓存</string>
          </property>
         </widget>
        </item>
@@ -92,7 +92,7 @@
         </font>
        </property>
        <property name="text">
-        <string>Camera Device Number:</string>
+        <string>摄像头序号：</string>
        </property>
        <property name="alignment">
         <set>Qt::AlignLeading|Qt::AlignLeft|Qt::AlignVCenter</set>
@@ -154,7 +154,7 @@
         </font>
        </property>
        <property name="text">
-        <string>Capture Rate:</string>
+        <string>截取速率：</string>
        </property>
        <property name="alignment">
         <set>Qt::AlignLeading|Qt::AlignLeft|Qt::AlignVCenter</set>
@@ -198,7 +198,7 @@
         </font>
        </property>
        <property name="text">
-        <string>ROI:</string>
+        <string>截取大小:</string>
        </property>
       </widget>
      </item>
@@ -236,7 +236,7 @@
         </font>
        </property>
        <property name="text">
-        <string>Camera Resolution:</string>
+        <string>分辨率：</string>
        </property>
        <property name="alignment">
         <set>Qt::AlignLeading|Qt::AlignLeft|Qt::AlignVCenter</set>
@@ -295,7 +295,7 @@
         </font>
        </property>
        <property name="text">
-        <string>Image Buffer:</string>
+        <string>照片缓存：</string>
        </property>
        <property name="alignment">
         <set>Qt::AlignLeading|Qt::AlignLeft|Qt::AlignVCenter</set>
@@ -360,7 +360,7 @@
         </font>
        </property>
        <property name="text">
-        <string>Processing Rate:</string>
+        <string>处理速率：</string>
        </property>
       </widget>
      </item>
@@ -380,7 +380,7 @@
         </font>
        </property>
        <property name="text">
-        <string>Cursor:</string>
+        <string>鼠标：</string>
        </property>
       </widget>
      </item>
