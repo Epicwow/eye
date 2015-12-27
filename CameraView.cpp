@@ -49,7 +49,6 @@ CameraView::CameraView(QWidget *parent, int deviceNumber, SharedImageBuffer *sha
     // Set initial GUI state
     ui->frameLabel->setText("No camera connected.");
     ui->imageBufferBar->setValue(0);
-    ui->imageBufferLabel->setText("[000/000]");
     ui->captureRateLabel->setText("");
     ui->processingRateLabel->setText("");
     ui->deviceNumberLabel->setText("");
@@ -187,15 +186,13 @@ void CameraView::stopProcessingThread()
 void CameraView::updateCaptureThreadStats(struct ThreadStatisticsData statData)
 {
     // Show [number of images in buffer / image buffer size] in imageBufferLabel
-    ui->imageBufferLabel->setText(QString("[")+QString::number(sharedImageBuffer->getByDeviceNumber(deviceNumber)->size())+
-                                  QString("/")+QString::number(sharedImageBuffer->getByDeviceNumber(deviceNumber)->maxSize())+QString("]"));
     // Show percentage of image bufffer full in imageBufferBar
     ui->imageBufferBar->setValue(sharedImageBuffer->getByDeviceNumber(deviceNumber)->size());
 
     // Show processing rate in captureRateLabel
     ui->captureRateLabel->setText(QString::number(statData.averageFPS)+" fps");
     // Show number of frames captured in nFramesCapturedLabel
-    ui->nFramesCapturedLabel->setText(QString("[") + QString::number(statData.nFramesProcessed) + QString("]"));
+    // ui->nFramesCapturedLabel->setText(QString("[") + QString::number(statData.nFramesProcessed) + QString("]"));
 }
 
 void CameraView::updateProcessingThreadStats(struct ThreadStatisticsData statData)
@@ -208,7 +205,7 @@ void CameraView::updateProcessingThreadStats(struct ThreadStatisticsData statDat
                           QString::number(processingThread->getCurrentROI().width())+
                           QString("x")+QString::number(processingThread->getCurrentROI().height()));
     // Show number of frames processed in nFramesProcessedLabel
-    ui->nFramesProcessedLabel->setText(QString("[") + QString::number(statData.nFramesProcessed) + QString("]"));
+    // ui->nFramesProcessedLabel->setText(QString("[") + QString::number(statData.nFramesProcessed) + QString("]"));
 }
 
 void CameraView::updateFrame(const QImage &frame)
