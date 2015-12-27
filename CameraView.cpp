@@ -415,6 +415,11 @@ void CameraView::on_pushButtonCapture_clicked()
 
 void CameraView::on_lineEditReceipt_returnPressed()
 {
+    if (ui->lineEditReceipt->text().isEmpty()) {
+        QMessageBox::information(this, "请先填写上手环号码", "手环号码必填");
+        return;
+    }
+
     getSetPersonInfo();
 }
 
