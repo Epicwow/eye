@@ -9,7 +9,7 @@ LIBS += -L/usr/local/Cellar/opencv/2.4.12/lib -lopencv_calib3d -lopencv_contrib 
 
 greaterThan(QT_MAJOR_VERSION, 4): QT += widgets
 
-TARGET = qt-opencv-multithreaded
+TARGET = eye
 TEMPLATE = app
 
 DEFINES += APP_VERSION=\\\"1.3.2\\\"
