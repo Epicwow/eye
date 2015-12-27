@@ -6,7 +6,7 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>930</width>
+    <width>765</width>
     <height>1280</height>
    </rect>
   </property>
@@ -428,9 +428,37 @@
       </widget>
      </item>
      <item row="1" column="3">
+      <widget class="QLabel" name="labelName">
+       <property name="text">
+        <string/>
+       </property>
+      </widget>
+     </item>
+     <item row="2" column="3">
+      <widget class="QLabel" name="labelPhone">
+       <property name="text">
+        <string/>
+       </property>
+      </widget>
+     </item>
+     <item row="3" column="3">
+      <widget class="QLabel" name="labelGender">
+       <property name="text">
+        <string/>
+       </property>
+      </widget>
+     </item>
+     <item row="5" column="3">
       <widget class="QPushButton" name="pushButtonCapture">
        <property name="text">
         <string>拍照</string>
+       </property>
+      </widget>
+     </item>
+     <item row="4" column="3">
+      <widget class="QLabel" name="labelCode">
+       <property name="text">
+        <string/>
        </property>
       </widget>
      </item>
