@@ -66,6 +66,8 @@ class CameraConnectDialog : public QDialog
 
     public slots:
         void resetToDefaults();
+private slots:
+        void on_pushButtonLocalPath_clicked();
 };
 
 #endif // CAMERACONNECTDIALOG_H

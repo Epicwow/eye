@@ -44,7 +44,7 @@
 #include "SharedImageBuffer.h"
 
 #define DB_NAME "citta"
-#define DB_PASS "1!"
+#define DB_PASS "Q@!"
 #define DB_USER "citta"
 #define SERVER_IP "192.168.1.5"
 

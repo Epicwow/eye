@@ -35,6 +35,7 @@
 // Qt
 #include <QtCore/QThread>
 #include <QMessageBox>
+#include <QFileDialog>
 
 CameraConnectDialog::CameraConnectDialog(QWidget *parent, bool isStreamSyncEnabled) :
     QDialog(parent),
@@ -74,6 +75,7 @@ CameraConnectDialog::CameraConnectDialog(QWidget *parent, bool isStreamSyncEnabl
     ui->deviceNumberEdit->setText("0");
     ui->resWEdit->setText("1920");
     ui->resHEdit->setText("1080");
+    
 }
 
 CameraConnectDialog::~CameraConnectDialog()
@@ -204,4 +206,10 @@ void CameraConnectDialog::resetToDefaults()
     ui->tabLabelEdit->setText("");
     // Enable Frame Processing checkbox
     ui->enableFrameProcessingCheckBox->setChecked(true);
+}
+
+void CameraConnectDialog::on_pushButtonLocalPath_clicked()
+{
+    QString dir = QFileDialog::getExistingDirectory(this, tr("打开路径"), "", QFileDialog::ShowDirsOnly| QFileDialog::DontResolveSymlinks);
+    ui->lineEditLocalFilePath->setText(dir);
 }

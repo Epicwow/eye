@@ -135,7 +135,6 @@ bool CameraView::connectToCamera(bool dropFrameIfBufferFull, int capThreadPrio, 
         emit setROI(QRect(0, 0, captureThread->getInputSourceWidth(), captureThread->getInputSourceHeight()));
         emit newImageProcessingFlags(imageProcessingFlags);
         imageProcessingSettingsDialog->updateStoredSettingsFromDialog();
-
         // Start capturing frames from camera
         captureThread->start((QThread::Priority)capThreadPrio);
         // Start processing captured frames (if enabled)
