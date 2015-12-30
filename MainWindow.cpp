@@ -143,6 +143,11 @@ void MainWindow::connectToCamera()
                     setTabCloseToolTips(ui->tabWidget, "Disconnect Camera");
                     // Prevent user from enabling/disabling stream synchronization after a camera has been connected
                     ui->actionSynchronizeStreams->setEnabled(false);
+                    QString localSavePath = cameraConnectDialog->getLocalSavePath();
+                    qDebug() << "localSavePath" << localSavePath;
+                    //connect(this, SIGNAL(setLocalSavePath(QString)), ??, SLOT(setLocalSavePath(QString)));
+                    connect(this, SIGNAL(setLocalSavePath(QString)), cameraViewMap[deviceNumber], SLOT(getLocalSavePath(QString)));
+                    emit setLocalSavePath(localSavePath);
                 }
                 // Could not connect to camera
                 else

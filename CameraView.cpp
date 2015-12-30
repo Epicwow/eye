@@ -128,6 +128,7 @@ bool CameraView::connectToCamera(bool dropFrameIfBufferFull, int capThreadPrio, 
         connect(this, SIGNAL(newImageProcessingFlags(struct ImageProcessingFlags)), processingThread, SLOT(updateImageProcessingFlags(struct ImageProcessingFlags)));
         connect(this, SIGNAL(setROI(QRect)), processingThread, SLOT(setROI(QRect)));
         connect(this, SIGNAL(setReceipt(QString)), processingThread, SLOT(captureScreen(QString)));
+        connect(this, SIGNAL(setLocalSavePath(QString)), processingThread, SLOT(setLocalSavePath(QString)));
         // Only enable ROI setting/resetting if frame processing is enabled
         if(enableFrameProcessing)
             connect(ui->frameLabel, SIGNAL(newMouseData(struct MouseData)), this, SLOT(newMouseData(struct MouseData)));
@@ -448,3 +449,8 @@ bool CameraView::connectDatabase()
     return true;
 }
 
+void CameraView::getLocalSavePath(QString localSavePath)
+{
+    qDebug() << localSavePath;
+    emit setLocalSavePath(localSavePath);
+}

@@ -85,6 +85,7 @@ class ProcessingThread : public QThread
 
         QString receipt;
         bool enableCapture;
+        QString captureLocalSavePath;
 
     protected:
         void run();
@@ -94,6 +95,7 @@ class ProcessingThread : public QThread
         void updateImageProcessingSettings(struct ImageProcessingSettings);
         void setROI(QRect roi);
         void captureScreen(QString receipt);
+        void setLocalSavePath(QString localSavePath);
 
     signals:
         void newFrame(const QImage &frame);

@@ -44,7 +44,7 @@
 #include "SharedImageBuffer.h"
 
 #define DB_NAME "citta"
-#define DB_PASS "Q@!"
+#define DB_PASS ""
 #define DB_USER "citta"
 #define SERVER_IP "192.168.1.5"
 
@@ -88,6 +88,7 @@ class CameraView : public QWidget
         void updateProcessingThreadStats(struct ThreadStatisticsData statData);
         void updateCaptureThreadStats(struct ThreadStatisticsData statData);
         void handleContextMenuAction(QAction *action);
+        void getLocalSavePath(QString localSavePath);
 
         void on_pushButtonCapture_clicked();
 
@@ -97,6 +98,7 @@ signals:
         void newImageProcessingFlags(struct ImageProcessingFlags imageProcessingFlags);
         void setROI(QRect roi);
         void setReceipt(QString receipt);
+        void setLocalSavePath(QString localSavePath);
 };
 
 #endif // CAMERAVIEW_H

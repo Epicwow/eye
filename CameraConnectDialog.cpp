@@ -208,6 +208,11 @@ void CameraConnectDialog::resetToDefaults()
     ui->enableFrameProcessingCheckBox->setChecked(true);
 }
 
+QString CameraConnectDialog::getLocalSavePath()
+{
+    return ui->lineEditLocalFilePath->text();
+}
+
 void CameraConnectDialog::on_pushButtonLocalPath_clicked()
 {
     QString dir = QFileDialog::getExistingDirectory(this, tr("打开路径"), "", QFileDialog::ShowDirsOnly| QFileDialog::DontResolveSymlinks);

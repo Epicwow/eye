@@ -258,3 +258,9 @@ void ProcessingThread::captureScreen(QString receipt)
     this->receipt = receipt;
     this->enableCapture = true;
 }
+
+void ProcessingThread::setLocalSavePath(QString localSavePath)
+{
+    captureLocalSavePath = localSavePath;
+    qDebug() << "processingThread" << captureLocalSavePath;
+}

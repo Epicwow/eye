@@ -69,6 +69,8 @@ class MainWindow : public QMainWindow
         void disconnectCamera(int index);
         void showAboutDialog();
         void setFullScreen(bool);
+signals:
+        void setLocalSavePath(QString localSavePath);
 };
 
 #endif // MAINWINDOW_H

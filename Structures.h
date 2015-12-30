@@ -35,6 +35,7 @@
 
 // Qt
 #include <QtCore/QRect>
+#include <QString>
 
 struct ImageProcessingSettings{
     int smoothType;

@@ -60,6 +60,7 @@ class CameraConnectDialog : public QDialog
         int getProcessingThreadPrio();
         QString getTabLabel();
         bool getEnableFrameProcessingCheckBoxState();
+        QString getLocalSavePath();
 
     private:
         Ui::CameraConnectDialog *ui;
