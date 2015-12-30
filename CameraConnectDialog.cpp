@@ -36,6 +36,10 @@
 #include <QtCore/QThread>
 #include <QMessageBox>
 #include <QFileDialog>
+#include <QStandardPaths>
+#include <QDebug>
+#include <QDesktopServices>
+#include <QDir>
 
 CameraConnectDialog::CameraConnectDialog(QWidget *parent, bool isStreamSyncEnabled) :
     QDialog(parent),
@@ -75,7 +79,9 @@ CameraConnectDialog::CameraConnectDialog(QWidget *parent, bool isStreamSyncEnabl
     ui->deviceNumberEdit->setText("0");
     ui->resWEdit->setText("1920");
     ui->resHEdit->setText("1080");
-    
+
+    QString desktopPath = QStandardPaths::writableLocation(QStandardPaths::DesktopLocation);
+    ui->lineEditLocalFilePath->setText(desktopPath);
 }
 
 CameraConnectDialog::~CameraConnectDialog()

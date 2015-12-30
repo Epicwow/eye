@@ -31,6 +31,8 @@
 /************************************************************************/
 
 #include "ProcessingThread.h"
+#include <QDebug>
+#include <QDir>
 
 ProcessingThread::ProcessingThread(SharedImageBuffer *sharedImageBuffer, int deviceNumber) : QThread(), sharedImageBuffer(sharedImageBuffer)
 {
@@ -149,7 +151,7 @@ void ProcessingThread::run()
         frame=MatToQImage(currentFrame);
         // quqinglei add here
         if (enableCapture) {
-            QString fileName = QString("/tmp/%1.png").arg(receipt);
+            QString fileName = QString("%1/eye_images/%2.png").arg(captureLocalSavePath).arg(receipt);
             frame.save(fileName);
 
             enableCapture = false;
@@ -262,5 +264,8 @@ void ProcessingThread::captureScreen(QString receipt)
 void ProcessingThread::setLocalSavePath(QString localSavePath)
 {
     captureLocalSavePath = localSavePath;
+    QDir dir(captureLocalSavePath);
+    dir.mkdir("eye_images");
+
     qDebug() << "processingThread" << captureLocalSavePath;
 }
