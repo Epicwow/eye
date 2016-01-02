@@ -35,6 +35,8 @@
 // Qt
 #include <QLabel>
 #include <QMessageBox>
+#include <QtGlobal>
+#include <QProcess>
 
 MainWindow::MainWindow(QWidget *parent) :
     QMainWindow(parent),
@@ -278,5 +280,35 @@ void MainWindow::setFullScreen(bool input)
 
 void MainWindow::on_actionSync_triggered()
 {
-    qDebug() << "rsync images";
+    /*
+     * rsync -auzv --password-file=./pass localSavePath/ citta@192.168.1.5:citta
+     */
+    qDebug() << "rsync images" << localSavePath;
+    QString cmd;
+    QString projectPath = QCoreApplication::applicationDirPath();
+    QString remoteIp = "192.168.1.5";
+
+#if defined(Q_OS_UNIX)
+    cmd = QString("/usr/bin/rsync -auzv --password-file=/etc/rsync/citta.pass %1/eye_images/ citta@%2::citta").arg(localSavePath).arg(remoteIp);
+#else
+    cmd = QString("%1/rsync -auzv --password-file=%1/citta.pass %1/eye_images/ citta@%2::citta").arg(projectPath).arg(remoteIp);
+#endif
+    qDebug() << cmd;
+    QProcess::execute(cmd);
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
