@@ -32,11 +32,15 @@
 
 #include "MainWindow.h"
 #include <QApplication>
+#include <QFont>
 
 int main(int argc, char *argv[])
 {
     // Show main window
     QApplication a(argc, argv);
+#if defined(Q_OS_WIN)
+    a.setFont(QFont("Microsoft YaHei UI Light"));
+#endif
     MainWindow w;
     w.show();
     // Start event loop
