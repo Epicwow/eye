@@ -25,6 +25,9 @@
   <property name="windowTitle">
    <string>eye</string>
   </property>
+  <property name="unifiedTitleAndToolBarOnMac">
+   <bool>true</bool>
+  </property>
   <widget class="QWidget" name="centralWidget">
    <layout class="QVBoxLayout" name="verticalLayout">
     <item>
@@ -88,6 +91,18 @@
     <string notr="true">background-color: rgb(233, 233, 232);</string>
    </property>
   </widget>
+  <widget class="QToolBar" name="toolBar">
+   <property name="windowTitle">
+    <string>toolBar</string>
+   </property>
+   <attribute name="toolBarArea">
+    <enum>TopToolBarArea</enum>
+   </attribute>
+   <attribute name="toolBarBreak">
+    <bool>false</bool>
+   </attribute>
+   <addaction name="actionSync"/>
+  </widget>
   <action name="actionAbout">
    <property name="text">
     <string>About</string>
@@ -120,6 +135,11 @@
    </property>
    <property name="text">
     <string>Full Screen</string>
+   </property>
+  </action>
+  <action name="actionSync">
+   <property name="text">
+    <string>sync</string>
    </property>
   </action>
  </widget>

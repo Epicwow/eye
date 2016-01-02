@@ -33,6 +33,7 @@
 #include "ProcessingThread.h"
 #include <QDebug>
 #include <QDir>
+#include <QProcess>
 
 ProcessingThread::ProcessingThread(SharedImageBuffer *sharedImageBuffer, int deviceNumber) : QThread(), sharedImageBuffer(sharedImageBuffer)
 {

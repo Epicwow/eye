@@ -143,7 +143,7 @@ void MainWindow::connectToCamera()
                     setTabCloseToolTips(ui->tabWidget, "Disconnect Camera");
                     // Prevent user from enabling/disabling stream synchronization after a camera has been connected
                     ui->actionSynchronizeStreams->setEnabled(false);
-                    QString localSavePath = cameraConnectDialog->getLocalSavePath();
+                    localSavePath = cameraConnectDialog->getLocalSavePath();
                     qDebug() << "localSavePath" << localSavePath;
                     //connect(this, SIGNAL(setLocalSavePath(QString)), ??, SLOT(setLocalSavePath(QString)));
                     connect(this, SIGNAL(setLocalSavePath(QString)), cameraViewMap[deviceNumber], SLOT(getLocalSavePath(QString)));
@@ -228,7 +228,7 @@ void MainWindow::disconnectCamera(int index)
 
 void MainWindow::showAboutDialog()
 {
-    QMessageBox::information(this, "About", QString("Created by Nick D'Ademo\n\nContact: nickdademo@gmail.com\nWebsite: www.nickdademo.com\n\nVersion: %1").arg(APP_VERSION));
+    QMessageBox::information(this, "About", QString("Thanks to Nick D'Ademo\n\n%1").arg(APP_VERSION));
 }
 
 bool MainWindow::removeFromMapByTabIndex(QMap<int, int> &map, int tabIndex)
@@ -274,4 +274,9 @@ void MainWindow::setFullScreen(bool input)
         this->showFullScreen();
     else
         this->showNormal();
+}
+
+void MainWindow::on_actionSync_triggered()
+{
+    qDebug() << "rsync images";
 }

@@ -411,6 +411,7 @@ void CameraView::getSetPersonInfo()
 void CameraView::on_pushButtonCapture_clicked()
 {
     emit setReceipt(ui->lineEditReceipt->text());
+
 }
 
 void CameraView::on_lineEditReceipt_returnPressed()

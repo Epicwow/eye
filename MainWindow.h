@@ -53,6 +53,7 @@ class MainWindow : public QMainWindow
     public:
         explicit MainWindow(QWidget *parent = 0);
         ~MainWindow();
+        QString localSavePath;
 
     private:
         Ui::MainWindow *ui;
@@ -71,6 +72,8 @@ class MainWindow : public QMainWindow
         void setFullScreen(bool);
 signals:
         void setLocalSavePath(QString localSavePath);
+private slots:
+        void on_actionSync_triggered();
 };
 
 #endif // MAINWINDOW_H
