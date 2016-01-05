@@ -1,6 +1,7 @@
 QT += core gui
 QT += sql
 QT += network
+QT += multimedia
 
 INCLUDEPATH += C:\cv\install\include
 INCLUDEPATH += C:\cv\install\include\opencv
@@ -67,3 +68,7 @@ FORMS += \
     ImageProcessingSettingsDialog.ui
 
 QMAKE_CXXFLAGS += -Wall
+
+RESOURCES += \
+    sound.qrc \
+    images.qrc
