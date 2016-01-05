@@ -99,6 +99,11 @@ CameraView::~CameraView()
             qDebug() << "[" << deviceNumber << "] Camera successfully disconnected.";
         else
             qDebug() << "[" << deviceNumber << "] WARNING: Camera already disconnected.";
+
+        if (db.isOpen()) {
+            db.close();
+            qDebug() << "[" << deviceNumber << "] WARNING: Close Database Connection.";
+        }
     }
     // Delete UI
     delete ui;
