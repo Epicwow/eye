@@ -32,6 +32,7 @@
 
 #include "CameraView.h"
 #include "ui_CameraView.h"
+#include <QSound>
 // Qt
 #include <QMessageBox>
 
@@ -411,16 +412,15 @@ void CameraView::getSetPersonInfo()
 void CameraView::on_pushButtonCapture_clicked()
 {
     emit setReceipt(ui->lineEditReceipt->text());
-
+    QSound::play(":/voice/play.wav");
+    qDebug() << "play";
 }
 
 void CameraView::on_lineEditReceipt_returnPressed()
 {
     if (ui->lineEditReceipt->text().isEmpty()) {
-        QMessageBox::information(this, "请先填写上手环号码", "手环号码必填");
         return;
     }
-
     getSetPersonInfo();
 }
 
