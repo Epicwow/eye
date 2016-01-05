@@ -51,4 +51,5 @@ FORMS += \
 QMAKE_CXXFLAGS += -Wall
 
 RESOURCES += \
-    sound.qrc
+    sound.qrc \
+    images.qrc

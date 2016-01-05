@@ -6,7 +6,7 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>373</width>
+    <width>332</width>
     <height>756</height>
    </rect>
   </property>
@@ -53,7 +53,7 @@
     <rect>
      <x>0</x>
      <y>0</y>
-     <width>373</width>
+     <width>332</width>
      <height>22</height>
     </rect>
    </property>
@@ -138,12 +138,18 @@
    </property>
   </action>
   <action name="actionSync">
+   <property name="icon">
+    <iconset resource="images.qrc">
+     <normaloff>:/images/sync.png</normaloff>:/images/sync.png</iconset>
+   </property>
    <property name="text">
     <string>sync</string>
    </property>
   </action>
  </widget>
  <layoutdefault spacing="6" margin="11"/>
- <resources/>
+ <resources>
+  <include location="images.qrc"/>
+ </resources>
  <connections/>
 </ui>
