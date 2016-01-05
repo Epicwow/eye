@@ -19,6 +19,3 @@ or baidu for the detail setup method.
 1. Set up qt sdk for mac
 2. use brew to install opencv
 3. Setup environment variables, PATH things
-
-### Last
-
