@@ -47,7 +47,7 @@
       <enum>QFrame::Sunken</enum>
      </property>
      <property name="lineWidth">
-      <number>0</number>
+      <number>1</number>
      </property>
      <property name="alignment">
       <set>Qt::AlignCenter</set>
