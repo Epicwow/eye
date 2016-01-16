@@ -75,6 +75,7 @@ CameraView::CameraView(QWidget *parent, int deviceNumber, SharedImageBuffer *sha
         connectDatabase();
         qDebug() << "Connecting to database";
     }
+    code = "";
 }
 
 CameraView::~CameraView()
@@ -414,11 +415,36 @@ void CameraView::getSetPersonInfo()
     ui->labelPhone->setText(phone);
 }
 
+void CameraView::updateMark()
+{
+    QString code = ui->labelCode->text().toUpper();
+    QString table_name;
+    if (code.isEmpty()) return;
+    QChar chara = code.at(0);
+    if (chara == QChar('A')) table_name = "zen_male";
+    else table_name = "zen_female";
+
+    QString sql = QString("update %1 set mark = 1 where code = '%2'").arg(table_name).arg(code);
+    qDebug() << sql;
+    QSqlQuery query;
+    query.exec(sql);
+}
+
 void CameraView::on_pushButtonCapture_clicked()
 {
+    if (ui->labelCode->text().isEmpty()) {
+        ui->labelInfo->setText("请点查询核对姓名");
+        return;
+    }
     emit setReceipt(ui->lineEditReceipt->text());
     QSound::play(":/voice/play.wav");
-    qDebug() << "play";
+    updateMark();
+
+    ui->labelInfo->setText("拍照成功");
+    ui->labelCode->clear();
+    ui->labelName->clear();
+    ui->labelPhone->clear();
+    ui->labelGender->clear();
 }
 
 void CameraView::on_lineEditReceipt_returnPressed()
@@ -459,4 +485,14 @@ void CameraView::getLocalSavePath(QString localSavePath)
 {
     qDebug() << localSavePath;
     emit setLocalSavePath(localSavePath);
+}
+
+void CameraView::on_pushButtonQuery_clicked()
+{
+    getSetPersonInfo();
+    if (ui->labelCode->text().isEmpty()) {
+        ui->labelInfo->setText("查无此人");
+    } else {
+        ui->labelInfo->clear();
+    }
 }

@@ -74,6 +74,8 @@ class CameraView : public QWidget
         void stopCaptureThread();
         void stopProcessingThread();
         void getSetPersonInfo();
+        QString code;
+        void updateMark(); // 更新数据库，设置mark = 1， 意思是给这个号码拍照了
         int deviceNumber;
         bool isCameraConnected;
 
@@ -93,6 +95,8 @@ class CameraView : public QWidget
         void on_pushButtonCapture_clicked();
 
         void on_lineEditReceipt_returnPressed();
+
+        void on_pushButtonQuery_clicked();
 
 signals:
         void newImageProcessingFlags(struct ImageProcessingFlags imageProcessingFlags);
