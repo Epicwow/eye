@@ -41,6 +41,7 @@
 #include "CameraView.h"
 #include "Buffer.h"
 #include "SharedImageBuffer.h"
+#include "syncthread.h"
 
 namespace Ui {
     class MainWindow;
@@ -61,6 +62,8 @@ class MainWindow : public QMainWindow
         QMap<int, int> deviceNumberMap;
         QMap<int, CameraView*> cameraViewMap;
         SharedImageBuffer *sharedImageBuffer;
+        SyncThread *syncThread;
+
         bool removeFromMapByTabIndex(QMap<int, int>& map, int tabIndex);
         void updateMapValues(QMap<int, int>& map, int tabIndex);
         void setTabCloseToolTips(QTabWidget *tabs, QString tooltip);

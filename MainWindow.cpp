@@ -64,6 +64,7 @@ MainWindow::MainWindow(QWidget *parent) :
     connect(ui->actionFullScreen, SIGNAL(toggled(bool)), this, SLOT(setFullScreen(bool)));
     // Create SharedImageBuffer object
     sharedImageBuffer = new SharedImageBuffer();
+
 }
 
 MainWindow::~MainWindow()
@@ -150,6 +151,8 @@ void MainWindow::connectToCamera()
                     //connect(this, SIGNAL(setLocalSavePath(QString)), ??, SLOT(setLocalSavePath(QString)));
                     connect(this, SIGNAL(setLocalSavePath(QString)), cameraViewMap[deviceNumber], SLOT(getLocalSavePath(QString)));
                     emit setLocalSavePath(localSavePath);
+                    syncThread = new SyncThread(localSavePath);
+                    syncThread->start(QThread::NormalPriority);
                 }
                 // Could not connect to camera
                 else
@@ -289,9 +292,9 @@ void MainWindow::on_actionSync_triggered()
     QString remoteIp = "192.168.1.5";
 
 #if defined(Q_OS_UNIX)
-    cmd = QString("/usr/bin/rsync -auzv --password-file=/etc/rsync/citta.pass %1/eye_images/ citta@%2::citta").arg(localSavePath).arg(remoteIp);
+    cmd = QString("/usr/bin/rsync -auzv  %1/eye_images/ citta@%2::citta").arg(localSavePath).arg(remoteIp);
 #else
-    cmd = QString("%1/rsync -auzv --password-file=%1/citta.pass %1/eye_images/ citta@%2::citta").arg(projectPath).arg(remoteIp);
+    cmd = QString("%1/rsync -auzv %1/eye_images/ citta@%2::citta").arg(projectPath).arg(remoteIp);
 #endif
     qDebug() << cmd;
     QProcess::execute(cmd);

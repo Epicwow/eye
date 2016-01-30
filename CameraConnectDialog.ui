@@ -446,7 +446,7 @@
         </font>
        </property>
        <property name="text">
-        <string>文件服务器设置：</string>
+        <string>文件服务器设置：&lt;以下设置请不要理会，未实现，直接点击OK&gt;</string>
        </property>
       </widget>
      </item>
