@@ -46,7 +46,7 @@
 #define DB_NAME "citta"
 #define DB_PASS "attic"
 #define DB_USER "citta"
-#define SERVER_IP "192.168.1.5"
+#define SERVER_IP "127.0.0.1"
 
 namespace Ui {
     class CameraView;
