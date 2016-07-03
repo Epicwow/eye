@@ -120,7 +120,7 @@
         <bool>true</bool>
        </property>
        <property name="placeholderText">
-        <string>手环号：</string>
+        <string>身份证：</string>
        </property>
        <property name="clearButtonEnabled">
         <bool>true</bool>

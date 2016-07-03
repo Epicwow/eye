@@ -13,12 +13,12 @@ void SyncThread::syncImagesToServer()
     qDebug() << "sync images here" << imageSavePath;
     QString cmd;
     QString projectPath = QCoreApplication::applicationDirPath();
-    QString remoteIp = "192.168.1.5";
+    QString remoteIp = "192.168.128.10";
 
 #if defined(Q_OS_UNIX)
-    cmd = QString("/usr/bin/rsync -auzv %1/eye_images/ citta@%2::citta").arg(imageSavePath).arg(remoteIp);
+    cmd = QString("/usr/bin/rsync -auzv %1/eye_images/ sumeru@%2::volunteer_images/").arg(imageSavePath).arg(remoteIp);
 #else
-    cmd = QString("%1/rsync -auzv %1/ citta@%2::citta").arg(projectPath).arg(remoteIp);
+    cmd = QString("%1/rsync -auzv %1/ sumeru%2::volunteer_images").arg(projectPath).arg(remoteIp);
 #endif
     qDebug() << cmd;
     QProcess::execute(cmd);

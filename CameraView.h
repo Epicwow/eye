@@ -43,10 +43,10 @@
 #include "Structures.h"
 #include "SharedImageBuffer.h"
 
-#define DB_NAME "citta"
-#define DB_PASS "attic"
-#define DB_USER "citta"
-#define SERVER_IP "127.0.0.1"
+#define DB_NAME "vol"
+#define DB_PASS "amituofo"
+#define DB_USER "volunteer"
+#define SERVER_IP "192.168.128.10"
 
 namespace Ui {
     class CameraView;
@@ -75,7 +75,6 @@ class CameraView : public QWidget
         void stopProcessingThread();
         void getSetPersonInfo();
         QString code;
-        void updateMark(); // 更新数据库，设置mark = 1， 意思是给这个号码拍照了
         int deviceNumber;
         bool isCameraConnected;
 

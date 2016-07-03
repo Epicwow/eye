@@ -283,21 +283,7 @@ void MainWindow::setFullScreen(bool input)
 
 void MainWindow::on_actionSync_triggered()
 {
-    /*
-     * rsync -auzv --password-file=./pass localSavePath/ citta@192.168.1.5:citta
-     */
-    qDebug() << "rsync images" << localSavePath;
-    QString cmd;
-    QString projectPath = QCoreApplication::applicationDirPath();
-    QString remoteIp = "192.168.1.5";
-
-#if defined(Q_OS_UNIX)
-    cmd = QString("/usr/bin/rsync -auzv  %1/eye_images/ citta@%2::citta").arg(localSavePath).arg(remoteIp);
-#else
-    cmd = QString("%1/rsync -auzv %1/eye_images/ citta@%2::citta").arg(projectPath).arg(remoteIp);
-#endif
-    qDebug() << cmd;
-    QProcess::execute(cmd);
+    qDebug() << "remove it";
 }
 
 

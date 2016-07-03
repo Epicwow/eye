@@ -389,25 +389,18 @@ void CameraView::handleContextMenuAction(QAction *action)
 void CameraView::getSetPersonInfo()
 {
     QString receipt = ui->lineEditReceipt->text().toUpper();
-    QString table_name, name, gender, phone, code;
+    QString name, gender, phone, code;
     if (receipt.isEmpty()) return;
 
-    QChar chara = receipt.at(0);
-    if (chara == QChar('A')) table_name = "zen_male";
-    else table_name = "zen_female";
-
     QSqlQuery query;
-    query.exec(QString("select name, gender, phone_num, code from %1 where receipt = '%2'").arg(table_name
-                                                                           ).arg(receipt));
+    query.exec(QString("select name, gender, code, phone from volunteer where pid = '%1'").arg(receipt));
+
     while(query.next()) {
         name = query.value(0).toString();
         gender = query.value(1).toString();
-        phone = query.value(2).toString();
-        code = query.value(3).toString();
-        qDebug() << name << gender << phone << code;
+        code = query.value(2).toString();
+        phone = query.value(3).toString();
     }
-
-    query.clear();
 
     ui->labelCode->setText(code);
     ui->labelName->setText(name);
@@ -415,30 +408,18 @@ void CameraView::getSetPersonInfo()
     ui->labelPhone->setText(phone);
 }
 
-void CameraView::updateMark()
-{
-    QString code = ui->labelCode->text().toUpper();
-    QString table_name;
-    if (code.isEmpty()) return;
-    QChar chara = code.at(0);
-    if (chara == QChar('A')) table_name = "zen_male";
-    else table_name = "zen_female";
-
-    QString sql = QString("update %1 set mark = 1 where code = '%2'").arg(table_name).arg(code);
-    qDebug() << sql;
-    QSqlQuery query;
-    query.exec(sql);
-}
-
 void CameraView::on_pushButtonCapture_clicked()
 {
+    QString receipt = ui->lineEditReceipt->text().trimmed();
+
     if (ui->labelCode->text().isEmpty()) {
-        ui->labelInfo->setText("请点查询核对姓名");
-        return;
+        ui->labelInfo->setText("数据库中不存在此人");
+        emit setReceipt("_unknow_" + receipt);
+    } else {
+        emit setReceipt(receipt);
     }
-    emit setReceipt(ui->lineEditReceipt->text());
+
     QSound::play(":/voice/play.wav");
-    updateMark();
 
     ui->labelInfo->setText("拍照成功");
     ui->labelCode->clear();
