@@ -152,7 +152,7 @@ void ProcessingThread::run()
         frame=MatToQImage(currentFrame);
         // quqinglei add here
         if (enableCapture) {
-            QString fileName = QString("%1/eye_images/%2.png").arg(captureLocalSavePath).arg(receipt);
+            QString fileName = QString("%1/eye_images/%2.png").arg(captureLocalSavePath).arg(receipt.toUpper());
             frame.save(fileName);
 
             enableCapture = false;

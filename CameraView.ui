@@ -123,7 +123,7 @@
         <string>身份证：</string>
        </property>
        <property name="clearButtonEnabled">
-        <bool>true</bool>
+        <bool>false</bool>
        </property>
       </widget>
      </item>

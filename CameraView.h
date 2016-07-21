@@ -44,7 +44,7 @@
 #include "SharedImageBuffer.h"
 
 #define DB_NAME "vol"
-#define DB_PASS "amituofo"
+#define DB_PASS "b7e6bf7f5cf47c8f383131e709f50b70"
 #define DB_USER "volunteer"
 #define SERVER_IP "192.168.128.10"
 

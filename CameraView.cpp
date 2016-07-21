@@ -410,18 +410,20 @@ void CameraView::getSetPersonInfo()
 
 void CameraView::on_pushButtonCapture_clicked()
 {
+    QString message;
     QString receipt = ui->lineEditReceipt->text().trimmed();
-
-    if (ui->labelCode->text().isEmpty()) {
-        ui->labelInfo->setText("数据库中不存在此人");
+    if (ui->labelName->text().isEmpty()) {
+        message = "成功，但数据库中不存在此人。";
         emit setReceipt("_unknow_" + receipt);
+        QSound::play(":/voice/failure.wav");
     } else {
+        message = "成功";
         emit setReceipt(receipt);
+        QSound::play(":/voice/play.wav");
     }
 
-    QSound::play(":/voice/play.wav");
 
-    ui->labelInfo->setText("拍照成功");
+    ui->labelInfo->setText(message);
     ui->labelCode->clear();
     ui->labelName->clear();
     ui->labelPhone->clear();

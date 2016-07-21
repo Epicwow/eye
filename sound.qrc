@@ -1,5 +1,6 @@
 <RCC>
     <qresource prefix="/">
         <file>voice/play.wav</file>
+        <file>voice/failure.wav</file>
     </qresource>
 </RCC>
