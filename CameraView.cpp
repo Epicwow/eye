@@ -432,15 +432,21 @@ void CameraView::updateMark()
 
 void CameraView::on_pushButtonCapture_clicked()
 {
-    if (ui->labelCode->text().isEmpty()) {
-        ui->labelInfo->setText("请点查询核对姓名");
-        return;
-    }
-    emit setReceipt(ui->lineEditReceipt->text());
-    QSound::play(":/voice/play.wav");
-    updateMark();
+    QString message;
+    QString receipt = ui->lineEditReceipt->text().trimmed();
 
-    ui->labelInfo->setText("拍照成功");
+    if (ui->labelName->text().isEmpty()) {
+        message = "成功，但数据库中不存在此人。";
+        emit setReceipt("_unknow_" + receipt);
+        QSound::play(":/voice/failure.wav");
+        updateMark();
+    } else {
+        message = "成功";
+        emit setReceipt(receipt);
+        QSound::play(":/voice/play.wav");
+    }
+
+    ui->labelInfo->setText(message);
     ui->labelCode->clear();
     ui->labelName->clear();
     ui->labelPhone->clear();
